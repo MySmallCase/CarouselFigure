@@ -84,6 +84,9 @@ typedef enum {
 // 分页控件小圆标颜色
 @property (nonatomic, strong) UIColor *dotColor;
 
+//分页控件当前小圆标颜色
+@property (nonatomic,strong) UIColor *indicatorDotColor;
+
 @property (nonatomic, strong) UIColor *titleLabelTextColor;
 @property (nonatomic, strong) UIFont  *titleLabelTextFont;
 @property (nonatomic, strong) UIColor *titleLabelBackgroundColor;

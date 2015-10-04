@@ -32,8 +32,9 @@
     cycleScrollView2.delegate = self;
     //    cycleScrollView2.titlesGroup = titles;
     //    cycleScrollView2.autoScroll = NO;
-    cycleScrollView2.dotColor = [UIColor yellowColor]; // 自定义分页控件小圆标颜色
-//    cycleScrollView2.pageControlStyle = CycleScrollViewPageContolStyleClassic;
+    cycleScrollView2.dotColor = [UIColor blueColor]; // 自定义分页控件小圆标颜色
+    cycleScrollView2.indicatorDotColor = [UIColor grayColor];
+    cycleScrollView2.pageControlStyle = CycleScrollViewPageContolStyleClassic;
     cycleScrollView2.placeholderImage = [UIImage imageNamed:@"placeholder"];
     cycleScrollView2.imageURLStringsGroup = imagesURLStrings;
     [self.view addSubview:cycleScrollView2];

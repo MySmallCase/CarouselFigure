@@ -267,6 +267,7 @@ NSString * const ID = @"cycleCell";
         {
             UIPageControl *pageControl = [[UIPageControl alloc] init];
             pageControl.numberOfPages = self.imagesGroup.count;
+            pageControl.pageIndicatorTintColor = self.indicatorDotColor;
             pageControl.currentPageIndicatorTintColor = self.dotColor;
             [self addSubview:pageControl];
             _pageControl = pageControl;

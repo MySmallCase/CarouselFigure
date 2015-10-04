@@ -61,7 +61,7 @@
     
     [UIView animateWithDuration:AnimateDuration delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:-20 options:UIViewAnimationOptionCurveLinear animations:^{
         self.backgroundColor = _dotColor;
-        self.transform = CGAffineTransformMakeScale(1.4, 1.4);
+        self.transform = CGAffineTransformMakeScale(1.2, 1.2);
     } completion:^(BOOL finished) {
         
     }];
