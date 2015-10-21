@@ -9,6 +9,7 @@
 #import "CycleScrollView.h"
 #import "CollectionViewCell.h"
 #import "PageControl.h"
+#import "NSData+SDDataCache.h"
 
 NSString * const ID = @"cycleCell";
 
@@ -58,7 +59,7 @@ NSString * const ID = @"cycleCell";
     _pageControlDotSize = CGSizeMake(10, 10);
     _pageControlStyle = CycleScrollViewPageContolStyleAnimated;
     
-    self.backgroundColor = [UIColor lightGrayColor];
+    self.backgroundColor = [UIColor whiteColor];
     
 }
 
@@ -111,7 +112,6 @@ NSString * const ID = @"cycleCell";
 - (void)setPageControlDotSize:(CGSize)pageControlDotSize
 {
     _pageControlDotSize = pageControlDotSize;
-    [self setupPageControl];
     if ([self.pageControl isKindOfClass:[PageControl class]]) {
         PageControl *pageContol = (PageControl *)_pageControl;
         pageContol.dotSize = pageControlDotSize;
@@ -212,10 +212,38 @@ NSString * const ID = @"cycleCell";
     NSString *urlStr = self.imageURLStringsGroup[index];
     NSURL *url = [NSURL URLWithString:urlStr];
     // 如果有缓存，直接加载缓存
-    NSData *data = nil;
+    NSData *data = [NSData getDataCacheWithIdentifier:urlStr];
     if (data) {
         [self.imagesGroup setObject:[UIImage imageWithData:data] atIndexedSubscript:index];
     } else {
+        
+        
+        
+//        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+//        NSURLSession *session = [NSURLSession sharedSession];
+//        NSURLSessionUploadTask *task = [session uploadTaskWithRequest:request fromData:nil completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+//            if (!error) {
+//                UIImage *image = [UIImage imageWithData:data];
+//                if (!image) return;
+//                [self.imagesGroup setObject:image atIndexedSubscript:index];
+//                dispatch_async(dispatch_get_main_queue(), ^{
+//                   if (index == 0) {
+//                       [self.mainView reloadData];
+//                   }
+//               });
+//               [data saveDataCacheWithIdentifier:url.absoluteString];
+//            }
+//            else { // 加载数据失败
+//               static int repeat = 0;
+//               dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                   if (repeat > 10) return;
+//                   [self loadImageAtIndex:index];
+//                   repeat++;
+//               });
+//               
+//           }
+//        }];
+//        [task resume];
         
         // 网络加载图片并缓存图片
         [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:url]
@@ -230,7 +258,7 @@ NSString * const ID = @"cycleCell";
                                                [self.mainView reloadData];
                                            }
                                        });
-//                                       [data saveDataCacheWithIdentifier:url.absoluteString];
+                                       [data saveDataCacheWithIdentifier:url.absoluteString];
                                    } else { // 加载数据失败
                                        static int repeat = 0;
                                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -267,7 +295,6 @@ NSString * const ID = @"cycleCell";
         {
             UIPageControl *pageControl = [[UIPageControl alloc] init];
             pageControl.numberOfPages = self.imagesGroup.count;
-            pageControl.pageIndicatorTintColor = self.indicatorDotColor;
             pageControl.currentPageIndicatorTintColor = self.dotColor;
             [self addSubview:pageControl];
             _pageControl = pageControl;
@@ -364,7 +391,7 @@ NSString * const ID = @"cycleCell";
 
 - (void)clearCache
 {
-//    [NSData clearCache];
+    [NSData clearCache];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -379,10 +406,12 @@ NSString * const ID = @"cycleCell";
     CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
     long itemIndex = indexPath.item % self.imagesGroup.count;
     UIImage *image = self.imagesGroup[itemIndex];
+    
     if (image.size.width == 0 && self.placeholderImage) {
         image = self.placeholderImage;
     }
     cell.imageView.image = image;
+    
     if (_titlesGroup.count) {
         cell.title = _titlesGroup[itemIndex];
     }
@@ -396,8 +425,6 @@ NSString * const ID = @"cycleCell";
     }
     
     return cell;
-    
-//    return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
@@ -415,13 +442,17 @@ NSString * const ID = @"cycleCell";
     int itemIndex = (scrollView.contentOffset.x + self.mainView.frame.size.width * 0.5) / self.mainView.frame.size.width;
     if (!self.imagesGroup.count) return; // 解决清除timer时偶尔会出现的问题
     int indexOnPageControl = itemIndex % self.imagesGroup.count;
-    
+    _indexPage = indexOnPageControl;
     if ([self.pageControl isKindOfClass:[PageControl class]]) {
         PageControl *pageControl = (PageControl *)_pageControl;
         pageControl.currentPage = indexOnPageControl;
     } else {
         UIPageControl *pageControl = (UIPageControl *)_pageControl;
         pageControl.currentPage = indexOnPageControl;
+    }
+    
+    if ([self.delegate respondsToSelector:@selector(indexOnPageControl:)]) {
+        [self.delegate indexOnPageControl:indexOnPageControl];
     }
 }
 
@@ -439,5 +470,6 @@ NSString * const ID = @"cycleCell";
         [self setupTimer];
     }
 }
+
 
 @end

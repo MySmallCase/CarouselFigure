@@ -23,7 +23,6 @@
     return self;
 }
 
-
 - (void)setTitleLabelBackgroundColor:(UIColor *)titleLabelBackgroundColor
 {
     _titleLabelBackgroundColor = titleLabelBackgroundColor;
@@ -52,7 +51,7 @@
 - (void)setupTitleLabel
 {
     UILabel *titleLabel = [[UILabel alloc] init];
-    _titleLable = titleLabel;
+    titleLabel = titleLabel;
     _titleLable.hidden = YES;
     [self addSubview:titleLabel];
 }
@@ -60,7 +59,7 @@
 - (void)setTitle:(NSString *)title
 {
     _title = [title copy];
-    _titleLable.text = [NSString stringWithFormat:@"%@", title];
+    _titleLable.text = [NSString stringWithFormat:@"   %@", title];
 }
 
 
@@ -70,10 +69,10 @@
     
     _imageView.frame = self.bounds;
     
-    CGFloat titleLabelW = self.frame.size.width;
+    CGFloat titleLabelW = self.bounds.size.width;
     CGFloat titleLabelH = _titleLabelHeight;
     CGFloat titleLabelX = 0;
-    CGFloat titleLabelY = self.frame.size.height - titleLabelH;
+    CGFloat titleLabelY = self.bounds.size.height - titleLabelH;
     _titleLable.frame = CGRectMake(titleLabelX, titleLabelY, titleLabelW, titleLabelH);
     _titleLable.hidden = !_titleLable.text;
 }

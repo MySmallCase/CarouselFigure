@@ -25,7 +25,11 @@ typedef enum {
 
 @protocol CycleScrollViewDelegate <NSObject>
 
+
+@optional
 - (void)cycleScrollView:(CycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index;
+
+- (void)indexOnPageControl:(NSInteger)index;
 
 @end
 
@@ -44,7 +48,7 @@ typedef enum {
 // 每张图片对应要显示的文字数组
 @property (nonatomic, strong) NSArray *titlesGroup;
 
-
+@property (nonatomic, assign) int indexPage;
 
 
 
@@ -96,8 +100,8 @@ typedef enum {
 
 // >>>>>>>>>>>>>>>>>>>>>>>>>  清除缓存接口
 
-//- (void)clearCache;
-//
+- (void)clearCache;
+
 + (instancetype)cycleScrollViewWithFrame:(CGRect)frame imagesGroup:(NSArray *)imagesGroup;
 
 + (instancetype)cycleScrollViewWithFrame:(CGRect)frame imageURLStringsGroup:(NSArray *)imageURLStringsGroup;
