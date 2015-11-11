@@ -15,13 +15,12 @@
 		1F4341F81BB107440055B483 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F4341F61BB107440055B483 /* LaunchScreen.storyboard */; };
 		1F4342031BB107440055B483 /* CarouselFigureTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4342021BB107440055B483 /* CarouselFigureTests.m */; };
 		1F43420E1BB107440055B483 /* CarouselFigureUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F43420D1BB107440055B483 /* CarouselFigureUITests.m */; };
-		1F4342291BB1223B0055B483 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F43421D1BB1223B0055B483 /* CollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		1F43422A1BB1223B0055B483 /* CycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F43421F1BB1223B0055B483 /* CycleScrollView.m */; settings = {ASSET_TAGS = (); }; };
-		1F43422B1BB1223B0055B483 /* AbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4342221BB1223B0055B483 /* AbstractDotView.m */; settings = {ASSET_TAGS = (); }; };
-		1F43422C1BB1223B0055B483 /* AnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4342241BB1223B0055B483 /* AnimatedDotView.m */; settings = {ASSET_TAGS = (); }; };
-		1F43422D1BB1223B0055B483 /* DotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4342261BB1223B0055B483 /* DotView.m */; settings = {ASSET_TAGS = (); }; };
-		1F43422E1BB1223B0055B483 /* PageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4342281BB1223B0055B483 /* PageControl.m */; settings = {ASSET_TAGS = (); }; };
-		1F5B12541BD78CDC00FAFA38 /* NSData+SDDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5B12521BD78CDC00FAFA38 /* NSData+SDDataCache.m */; settings = {ASSET_TAGS = (); }; };
+		1F4342291BB1223B0055B483 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F43421D1BB1223B0055B483 /* CollectionViewCell.m */; };
+		1F43422A1BB1223B0055B483 /* CycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F43421F1BB1223B0055B483 /* CycleScrollView.m */; };
+		1F43422B1BB1223B0055B483 /* AbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4342221BB1223B0055B483 /* AbstractDotView.m */; };
+		1F43422C1BB1223B0055B483 /* AnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4342241BB1223B0055B483 /* AnimatedDotView.m */; };
+		1F43422D1BB1223B0055B483 /* DotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4342261BB1223B0055B483 /* DotView.m */; };
+		1F43422E1BB1223B0055B483 /* PageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4342281BB1223B0055B483 /* PageControl.m */; };
 		95ECD0DB79B7BF8AA8F7CAC9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FB410738AFD91862AFCD997 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -71,8 +70,6 @@
 		1F4342261BB1223B0055B483 /* DotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DotView.m; sourceTree = "<group>"; };
 		1F4342271BB1223B0055B483 /* PageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageControl.h; sourceTree = "<group>"; };
 		1F4342281BB1223B0055B483 /* PageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageControl.m; sourceTree = "<group>"; };
-		1F5B12521BD78CDC00FAFA38 /* NSData+SDDataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SDDataCache.m"; sourceTree = "<group>"; };
-		1F5B12531BD78CDC00FAFA38 /* NSData+SDDataCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SDDataCache.h"; sourceTree = "<group>"; };
 		34900E448A00D1968B4C006C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		6FB410738AFD91862AFCD997 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C3C1455A03A75C4245FDC6E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -172,8 +169,6 @@
 		1F43421B1BB1223B0055B483 /* CycleScrollView */ = {
 			isa = PBXGroup;
 			children = (
-				1F5B12521BD78CDC00FAFA38 /* NSData+SDDataCache.m */,
-				1F5B12531BD78CDC00FAFA38 /* NSData+SDDataCache.h */,
 				1F43421C1BB1223B0055B483 /* CollectionViewCell.h */,
 				1F43421D1BB1223B0055B483 /* CollectionViewCell.m */,
 				1F43421E1BB1223B0055B483 /* CycleScrollView.h */,
@@ -380,7 +375,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F5B12541BD78CDC00FAFA38 /* NSData+SDDataCache.m in Sources */,
 				1F43422E1BB1223B0055B483 /* PageControl.m in Sources */,
 				1F43422A1BB1223B0055B483 /* CycleScrollView.m in Sources */,
 				1F43422C1BB1223B0055B483 /* AnimatedDotView.m in Sources */,

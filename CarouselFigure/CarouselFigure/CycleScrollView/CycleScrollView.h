@@ -97,11 +97,6 @@ typedef enum {
 @property (nonatomic, assign) CGFloat titleLabelHeight;
 
 
-
-// >>>>>>>>>>>>>>>>>>>>>>>>>  清除缓存接口
-
-- (void)clearCache;
-
 + (instancetype)cycleScrollViewWithFrame:(CGRect)frame imagesGroup:(NSArray *)imagesGroup;
 
 + (instancetype)cycleScrollViewWithFrame:(CGRect)frame imageURLStringsGroup:(NSArray *)imageURLStringsGroup;
